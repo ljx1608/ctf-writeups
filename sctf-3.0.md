@@ -15,7 +15,7 @@ Archive of CTF challenges can be found [here](https://github.com/8061xjl/ctfarch
 - [ ] [simple](#simple)
 - [ ] [warmup](#warmup)
 - [ ] [malloc](#malloc)
-- [ ] [rock farm simulator 2011](#rock-farm-simulator-2011)
+- [x] [rock farm simulator 2011](#rock-farm-simulator-2011)
 - [ ] [Turbo Fast Crypto, part 2](#turbo-fast-crypto-part-2)
 
 [CRYPTO](#crypto)
@@ -55,10 +55,10 @@ Archive of CTF challenges can be found [here](https://github.com/8061xjl/ctfarch
 
 [FORENSICS](#forensics)
 
-- [ ] [Duck Delivery](#duck-delivery)
-- [ ] [Birds?](#birds)
-- [ ] [Digging In The Dump Pt. I](#digging-in-the-dump-pt-i)
-- [ ] [Digging In The Dump Pt. II](#digging-in-the-dump-pt-ii)
+- [x] [Duck Delivery](#duck-delivery)
+- [x] [Birds?](#birds)
+- [x] [Digging In The Dump Pt. I](#digging-in-the-dump-pt-i)
+- [x] [Digging In The Dump Pt. II](#digging-in-the-dump-pt-ii)
 - [ ] [Mind Cracking Adversity](#mind-cracking-adversity)
 - [ ] [Exploring The Universe! (Part 2)](#exploring-the-universe-part-2)
 - [ ] [plush, lush, flush, blush](#plush-lush-flush-blush)
@@ -95,7 +95,7 @@ Summary of how this works:
 
 Working examples from challenge author *main*:
 
-![screenrecording](https://cdn.discordapp.com/attachments/915535600872984597/924697425900351539/RFS.mp4)
+https://cdn.discordapp.com/attachments/915535600872984597/924697425900351539/RFS.mp4
 
 [![asciicast](https://asciinema.org/a/MQ9MRRVn1jxJO3SeBCRJTU8rj.svg)](https://asciinema.org/a/MQ9MRRVn1jxJO3SeBCRJTU8rj)
 
