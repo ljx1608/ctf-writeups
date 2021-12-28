@@ -95,7 +95,7 @@ Summary of how this works:
 
 Working examples from challenge author *main*:
 
-https://cdn.discordapp.com/attachments/915535600872984597/924697425900351539/RFS.mp4
+https://user-images.githubusercontent.com/44281062/147614438-253b789f-aea1-470b-9e2a-df09a5fa129c.mov
 
 [![asciicast](https://asciinema.org/a/MQ9MRRVn1jxJO3SeBCRJTU8rj.svg)](https://asciinema.org/a/MQ9MRRVn1jxJO3SeBCRJTU8rj)
 
