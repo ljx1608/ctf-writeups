@@ -70,7 +70,7 @@ Archive of CTF challenges can be found [here](https://github.com/8061xjl/ctfarch
 - [ ] [Heads and Tails Part 3](#heads-and-tails-part-3)
 - [ ] [Can You Math It?](#can-you-math-it)
 - [x] [I lost my anime collection! Pt. II](#i-lost-my-anime-collection-pt-ii)
-- [ ] [I lost my anime collection! Pt. I](#i-lost-my-anime-collection-pt-i)
+- [x] [I lost my anime collection! Pt. I](#i-lost-my-anime-collection-pt-i)
 - [ ] [rock farming simulator deluxe edition](#rock-farming-simulator-deluxe-edition)
 
 [SANITY](#sanity)
@@ -371,3 +371,15 @@ Getting the username (`Alex24`) and password (`IHeartCookies`), we log into the 
 [Challenge](https://github.com/8061xjl/ctfarchive-sctf-3.0#i-lost-my-anime-collection-pt-ii)
 
 Add the given disk as a data source into [Autopsy](https://www.autopsy.com/). We find a video file (`Kimi No Na Wa Clips.mp4`) where the flag is displayed.
+
+![Autopsy](./sctf-3.0/i-lost-my-anime-collection-pt-2-autopsy.png)
+
+### I lost my anime collection! Pt. I
+
+[Challenge](https://github.com/8061xjl/ctfarchive-sctf-3.0#i-lost-my-anime-collection-pt-i)
+
+*We did not solve this challenge during the competition.*
+
+Create a Windows Server virtual machine (evaluation ISOs available at [here](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server)), since "*A consumer version of Windows can't read RAID 5!*" and we will have to use a Windows Server OS. After mounting the two disks onto the VM and creating a new empty disk, we can use Disk Management to rebuild the RAID5 array (right click on disks > Import Foreign Disks..., then right click the RAID5 volume > Repair Volume...). We then assign the volume a drive letter and simply open the video stored in it (`Tenki No Ko Clips.mp4`) to see the flag.
+
+![flag](./sctf-3.0/i-lost-my-anime-collection-pt-1-flag.png)
