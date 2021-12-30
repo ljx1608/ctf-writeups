@@ -23,8 +23,8 @@ Archive of CTF challenges can be found [here](https://github.com/8061xjl/ctfarch
 - [x] [Shalom Shalom](#shalom-shalom)
 - [ ] [Turbo Fast Crypto, part 1](#turbo-fast-crypto-part-1)
 - [ ] [I can't open this file? Part 2](#i-cant-open-this-file-part-2)
-- [ ] [Diffie's Key Exchange](#diffies-key-exchange)
-- [ ] [I can't open this file? Part 1](#i-cant-open-this-file-part-1)
+- [x] [Diffie's Key Exchange](#diffies-key-exchange)
+- [x] [I can't open this file? Part 1](#i-cant-open-this-file-part-1)
 - [ ] [totallyfoolproofcrypto](#totallyfoolproofcrypto)
 - [ ] [Diffie's Key Exchange 2](#diffies-key-exchange-2)
 - [ ] [whodunnit](#whodunnit)
@@ -69,7 +69,7 @@ Archive of CTF challenges can be found [here](https://github.com/8061xjl/ctfarch
 - [ ] [Heads and Tails Part 2](#heads-and-tails-part-2)
 - [ ] [Heads and Tails Part 3](#heads-and-tails-part-3)
 - [ ] [Can You Math It?](#can-you-math-it)
-- [ ] [I lost my anime collection! Pt. II](#i-lost-my-anime-collection-pt-ii)
+- [x] [I lost my anime collection! Pt. II](#i-lost-my-anime-collection-pt-ii)
 - [ ] [I lost my anime collection! Pt. I](#i-lost-my-anime-collection-pt-i)
 - [ ] [rock farming simulator deluxe edition](#rock-farming-simulator-deluxe-edition)
 
@@ -135,6 +135,18 @@ We ran the string through a [cipher identifier](https://www.dcode.fr/cipher-iden
 ![Cipher identifier output](sctf-3.0/shalom-shalom-cipher-identifier-output.png)
 
 We get the flag by deciphering the string with [Affine Cipher](https://www.dcode.fr/affine-cipher) in bruteforce mode. It is interesting to note that the Atbash cipher is just an Affine cipher with a fixed key 🙂.
+
+### Diffie's Key Exchange
+
+[Challenge](https://github.com/8061xjl/ctfarchive-sctf-3.0#diffies-key-exchange)
+
+After staring at the challenge for a while, we discover that understanding math is important. We notice if `priv-key`, which is an input we control, is `0`, `B` will be `1` (because math), and consequently `shared_secret` will also be `1`. This allows us to get the flag as a long integer without any modification, which we can then convert using `long_to_bytes()` to get the flag.
+
+### I can't open this file? Part 1
+
+[Challenge](https://github.com/8061xjl/ctfarchive-sctf-3.0#i-cant-open-this-file-part-1)
+
+Analysing the encryption method, we can see that after the flag is Base64 encoded, it is converted to a bunch of (zero-padded) double digit integers that represents the position of each character in the `digits` list. Therefore, we split the encrypted flag into groups of two digits, and then convert the integers to characters using the `digits` list, giving us `SVJTe24wd195MHVfYzRuX2MwZDN9`. We then Base64 decode to get the flag.
 
 ## RE
 
@@ -351,3 +363,11 @@ After decrypting the master_key blob, we can put it back into the script and run
 Getting the username (`Alex24`) and password (`IHeartCookies`), we log into the website from the previous part of this challenge series, and we get the flag:
 
 ![Screenshot of the website](./sctf-3.0/digging-in-the-dump-pt-2.jpeg)
+
+## MISC
+
+### I lost my anime collection! Pt. II
+
+[Challenge](https://github.com/8061xjl/ctfarchive-sctf-3.0#i-lost-my-anime-collection-pt-ii)
+
+Add the given disk as a data source into [Autopsy](https://www.autopsy.com/). We find a video file (`Kimi No Na Wa Clips.mp4`) where the flag is displayed.
