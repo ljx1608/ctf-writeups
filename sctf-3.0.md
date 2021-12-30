@@ -32,7 +32,7 @@ Archive of CTF challenges can be found [here](https://github.com/8061xjl/ctfarch
 [RE](#re)
 
 - [x] [Flag checker](#flag-checker)
-- [ ] [Reverse](#reverse)
+- [x] [Reverse](#reverse)
 - [ ] [Flag checker v2.0](#flag-checker-v20)
 
 [OSINT](#osint)
@@ -164,6 +164,85 @@ function check_flag() {
 The user input is being encoded with [Base64](https://en.wikipedia.org/wiki/Base64) and compared to the similarly encoded flag.
 
 By decoding the flag with a base64 decoder, we get the flag (`IRS{insp3ct_e1ement}`).
+
+### Reverse
+
+We modify the script slightly to accept a list of numbers so we can investigate the transformations done by the script.
+
+```diff
+print("Enter the flag and I will check it for you.")
+- enteredFlag = input()
++ enteredFlag = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
++               14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+coolarray = [[[], [], []], [[], [], []], [[], [], []]]
+if len(enteredFlag) == 27:
+    for i in range(3):
+        for j in range(3):
+            for k in range(3):
+              print(i, j, k)
+              coolarray[i][j].append(enteredFlag[i*9 + j*3 + k])
+    newflag = ""
+    for i in [coolarray[2], coolarray[0], coolarray[1]]:
+        for j in i[::-1]:
+            for k in [j[1], j[2], j[0]]:
++                newflag = newflag + "," + str(k) # convert int to str
++    newflag = newflag[1:]  # remove the first comma
+    print(newflag)
+    if newflag == "1}c5f1bbeb4580{RSI43db46731":
+        print("Your flag is correct!")
+    else:
+        print("Your flag is incorrect. :(")
+else:
+    print("Your flag is incorrect. :(")
+```
+
+This generates the following output:
+
+```
+26,27,25,23,24,22,20,21,19,8,9,7,5,6,4,2,3,1,17,18,16,14,15,13,11,12,10
+```
+
+We can then write a script to reverse the transformation which yields the flag! (`IRS{805b41736b4d43ebb15fc1}`)
+
+```python
+# script to reverse the transformation
+newflag = [26, 27, 25, 23, 24, 22, 20, 21, 19,
+           8, 9, 7, 5, 6, 4, 2, 3, 1,
+           17, 18, 16, 14, 15, 13, 11, 12, 10] # data to test with
+newflag = list("1}c5f1bbeb4580{RSI43db46731") # transformed flag
+
+
+# reassemble array in correct order
+hyper_big_chunkus = []
+
+for i in range(3):
+    big_chunkus = []
+
+    for j in range(3):
+        chunk = [newflag[i*9 + j*3 + 2],
+                 newflag[i*9 + j*3],
+                 newflag[i*9 + j*3 + 1]]
+
+        big_chunkus.append(chunk)
+
+    big_chunkus = big_chunkus[::-1]
+    hyper_big_chunkus.append(big_chunkus)
+
+hyper_big_chunkus = [hyper_big_chunkus[1],
+                     hyper_big_chunkus[2],
+                     hyper_big_chunkus[0]]
+
+
+# convert output array to string
+nice_flag_bro = ""
+
+for i in range(3):
+    for j in range(3):
+        for k in range(3):
+            nice_flag_bro += hyper_big_chunkus[i][j][k]
+
+print(nice_flag_bro)
+```
 
 ## OSINT
 
