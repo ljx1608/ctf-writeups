@@ -31,7 +31,7 @@ Archive of CTF challenges can be found [here](https://github.com/8061xjl/ctfarch
 
 [RE](#re)
 
-- [ ] [Flag checker](#flag-checker)
+- [x] [Flag checker](#flag-checker)
 - [ ] [Reverse](#reverse)
 - [ ] [Flag checker v2.0](#flag-checker-v20)
 
@@ -135,6 +135,35 @@ We ran the string through a [cipher identifier](https://www.dcode.fr/cipher-iden
 ![Cipher identifier output](sctf-3.0/shalom-shalom-cipher-identifier-output.png)
 
 We get the flag by deciphering the string with [Affine Cipher](https://www.dcode.fr/affine-cipher) in bruteforce mode. It is interesting to note that the Atbash cipher is just an Affine cipher with a fixed key 🙂.
+
+## RE
+
+### Flag checker
+
+[Challenge](https://github.com/8061xjl/ctfarchive-sctf-3.0#flag-checker)
+
+Opening the webpage given, we see an form we can check the flag with.
+
+![Flag checker form](sctf-3.0/flag-checker.png)
+
+Opening developer tools, we see that the `Check` button runs a javascript function.
+
+```js
+function check_flag() {
+    let flag = document.getElementById('flag');
+    let result = document.getElementById('result');
+    
+    clearTimeout(hide);
+    result.textContent = btoa(flag.value) === "SVJTe2luc3AzY3RfZTFlbWVudH0=" ?
+        'Correct!' : 'Wrong.';
+    hide = setTimeout(() => { result.textContent = ''; }, 500);
+
+}
+```
+
+The user input is being encoded with [Base64](https://en.wikipedia.org/wiki/Base64) and compared to the similarly encoded flag.
+
+By decoding the flag with a base64 decoder, we get the flag (`IRS{insp3ct_e1ement}`).
 
 ## OSINT
 
