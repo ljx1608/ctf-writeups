@@ -20,7 +20,7 @@ Archive of CTF challenges can be found [here](https://github.com/8061xjl/ctfarch
 
 [CRYPTO](#crypto)
 
-- [ ] [Shalom Shalom](#shalom-shalom)
+- [x] [Shalom Shalom](#shalom-shalom)
 - [ ] [Turbo Fast Crypto, part 1](#turbo-fast-crypto-part-1)
 - [ ] [I can't open this file? Part 2](#i-cant-open-this-file-part-2)
 - [ ] [Diffie's Key Exchange](#diffies-key-exchange)
@@ -119,6 +119,22 @@ Send h
 ```
 
 It worked. scripts > humans
+
+## CRYPTO
+
+### Shalom Shalom
+
+[Challenge](https://github.com/8061xjl/ctfarchive-sctf-3.0#shalom-shalom)
+
+This challenge provided us with a string to decrypt (`xibkgltizksbrhxllo`). The words **AT** and **BASH** were capitalised in the challenge description, indicating a clue.
+
+*Intended solution was to decipher the string with the [Atbash](https://en.wikipedia.org/wiki/Atbash) cipher that the clues were referring to. By [deciphering](https://www.dcode.fr/atbash-cipher) it, we get the flag `cryptographyiscool`*
+
+We ran the string through a [cipher identifier](https://www.dcode.fr/cipher-identifier) to find out what cipher was used.
+
+![Cipher identifier output](sctf-3.0/shalom-shalom-cipher-identifier-output.png)
+
+We get the flag by deciphering the string with [Affine Cipher](https://www.dcode.fr/affine-cipher) in bruteforce mode. It is interesting to note that the Atbash cipher is just an Affine cipher with a fixed key 🙂.
 
 ## FORENSICS
 
