@@ -4,7 +4,7 @@ By *spareus* comprising Liu Jie Xu ([@8061xjl](https://github.com/8061xjl)) and 
 
 **🚧 WRITEUPS ARE INCOMPLETE AND STILL WORK IN PROGRESS 🚧**
 
-Archive of CTF challenges can be found [here](https://github.com/8061xjl/ctfarchive-sctf-3.0).
+Archive of CTF challenges can be found [here](https://github.com/8061xjl/ctfarchive-sctf-3.0) (my *manually* archived version lol) or [here](https://github.com/IRS-Cybersec/Sieberrsec-CTF-3.0) (official).
 
 *Writeups are limited.*
 
