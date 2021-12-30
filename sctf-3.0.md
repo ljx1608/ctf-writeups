@@ -37,12 +37,12 @@ Archive of CTF challenges can be found [here](https://github.com/8061xjl/ctfarch
 
 [OSINT](#osint)
 
-- [ ] ["The Sieberr" Heist Part 1](#the-sieberr-heist-part-1)
+- [x] ["The Sieberr" Heist Part 1](#the-sieberr-heist-part-1)
 - [ ] [A Wealth of Information Part 1](#a-wealth-of-information-part-1)
 - [ ] [We go way back](#we-go-way-back)
 - [ ] [A Wealth of Information Part 2](#a-wealth-of-information-part-2)
-- [ ] ["The Sieberr" Heist Part 3](#the-sieberr-heist-part-3)
-- [ ] ["The Sieberr" Heist Part 2](#the-sieberr-heist-part-2)
+- [x] ["The Sieberr" Heist Part 3](#the-sieberr-heist-part-3)
+- [x] ["The Sieberr" Heist Part 2](#the-sieberr-heist-part-2)
 - [ ] [Public Transport Hunt](#public-transport-hunt)
 
 [WEB](#web)
@@ -135,6 +135,64 @@ We ran the string through a [cipher identifier](https://www.dcode.fr/cipher-iden
 ![Cipher identifier output](sctf-3.0/shalom-shalom-cipher-identifier-output.png)
 
 We get the flag by deciphering the string with [Affine Cipher](https://www.dcode.fr/affine-cipher) in bruteforce mode. It is interesting to note that the Atbash cipher is just an Affine cipher with a fixed key 🙂.
+
+## OSINT
+
+### "The Sieberr" Heist Part 1
+
+[Challenge](https://github.com/8061xjl/ctfarchive-sctf-3.0#the-sieberr-heist-part-1)
+
+By viewing the exif data of the image, we obtain the location where the image was taken (33°49'27.1"S 151°15'01.0"E).
+
+From the satellite view, we get the street name (HUNTERRD) and the postal code (2088). A quick google search of the localities in the Mosman suburb yields the [locality](https://en.wikipedia.org/wiki/Balmoral,_New_South_Wales) (BALMORAL).
+
+![Satellite view](sctf-3.0/the-sieberr-heist-part-1-satellite-view.png)
+
+From the street view, we get the unit number (3) and number of stories (2) of the building.
+
+![Street view](sctf-3.0/the-sieberr-heist-part-1-street-view.png)
+
+Assembling our information, we get the flag. (`IRS{3_HUNTERRD_BALMORAL_2088_2}`)
+
+### "The Sieberr" Heist Part 3
+
+[Challenge](https://github.com/8061xjl/ctfarchive-sctf-3.0#the-sieberr-heist-part-3)
+
+We find the individual "Casrihms Myrert" on [Facebook](https://www.facebook.com/profile.php?id=100076369812789).
+
+On his facebook post, we see that he is travelling from the Sydney CBD to a hospital somewhere in Northern Beaches. He also shares that this bus is quite direct.
+
+A look at the comments section also reveals that the hospital is not Northern Beaches Hospital. It is also rather sad that someone asked him to go die 😭.
+
+![Facebook post](sctf-3.0/the-sieberr-heist-part-3-fb-post.png)
+
+By searching for the [hospitals near Northern Beaches](https://www.google.com/maps/search/hospitals+near+Northern+Beaches,+NSW,+Australia/@-33.7486806,151.2363301,13z/data=!3m1!4b1), we find that Mona Vale Hospital has a [direct bus](https://www.google.com/maps/dir/Sydney+CBD,+NSW,+Australia/Mona+Vale+Hospital,+Mona+Vale+NSW+2103,+Australia/@-33.7737926,151.1821648,12z/am=t/data=!4m19!4m18!1m5!1m1!1s0x6b12ae3f3298a729:0xef50fa5572780602!2m2!1d151.20733!2d-33.8708464!1m5!1m1!1s0x6b0d554eb5009ef9:0x9eb56c324e6a9760!2m2!1d151.3062148!2d-33.6868114!2m3!6e1!7e2!8j1640873633!3e3!5i2) (Route B1) from the Sydney CBD to it.
+
+We can then obtain the destination station  of route B1 (MONAVALE) from [Moovit](https://moovitapp.com/sydney-442/lines/B1/61292348/5840717/en-gb).
+
+Assembling our information, we get the flag. (`IRS{B1_MONAVALE_MONAVALEHOSPITAL}`)
+
+### "The Sieberr" Heist Part 2
+
+From the given image, we get the bus route number (340). Knowing the route, we can find the destination station on [Moovit](https://moovitapp.com/index/en-gb/public_transportation-line-340-Sydney-442-855272-4614288-0) (BONDIJUNCTION). We also notice that the bus is making a left turn at a T-intersection.
+
+![Given image](sctf-3.0/the-sieberr-heist-part-2-given-image.png)
+
+By following the route for [bus 340](https://moovitapp.com/index/en-gb/public_transportation-line-340-Sydney-442-855272-4614288-0), we find that it makes a left turn at a T-intersection after Wynyard Station. *We plot the route using a bicycle path here as bus 340 is no longer in service and the driving route generated [made no sense](https://www.google.com/maps/dir/Lang+Park,+York+St,+Sydney+NSW+2000,+Australia/Wynyard+Station,+York+St,+Stand+H,+Sydney+NSW+2000,+Australia/Town+Hall+Station,+Park+St,+Stand+H,+Sydney+NSW+2000,+Australia/Hyde+Park,+Park+St,+Stand+B,+Sydney+NSW+2000,+Australia/@-33.8703412,151.2075307,15z/data=!3m1!4b1!4m26!4m25!1m5!1m1!1s0x6b12ae413f59e2d3:0xffc18ad801c6535b!2m2!1d151.2056125!2d-33.8638467!1m5!1m1!1s0x6b12ae40957b210d:0x9590b1233e9ad226!2m2!1d151.2058978!2d-33.8667949!1m5!1m1!1s0x6b12ae3e7b1d01cb:0x44c487147bb481a9!2m2!1d151.20787!2d-33.872997!1m5!1m1!1s0x6b12ae15c6d24943:0x33a52c1911a6cdeb!2m2!1d151.2110303!2d-33.8732881!3e0).*
+
+![Bus 340 left turn](sctf-3.0/the-sieberr-heist-part-2-satellite-view.png)
+
+By zooming in with [street view](https://www.google.com/maps/@-33.8725325,151.2065117,3a,90y,190.48h,103.49t/data=!3m6!1e1!3m4!1sJI1D0drivOhPMizFqZJY3A!2e0!7i13312!8i6656), we can confirm we have the correct location.
+
+![Street view of bus 340 left turn](sctf-3.0/the-sieberr-heist-part-2-street-view.png)
+
+We refer back to the satellite view, and we get the name of the street that the photo was taken on (YORKST) and the name of the cross street (DRUITTST).
+
+We go back to the given image, which shows us the bus is gives us the bus fleet number (2213). This allows us to look up the brand (VOLVO) and model (B12BLEA) of the bus on the State Transport Authority's [website](https://fleetlists.busaustralia.com/sta.php?flsummary=STA).
+
+![Brand and model of the bus](sctf-3.0/the-sieberr-heist-part-2-bus-brand-and-model.png)
+
+Assembling our information, we get the flag. (`IRS{YORKST_DRUITTST_VOLVO_B12BLEA_BONDIJUNCTION}`)
 
 ## FORENSICS
 
