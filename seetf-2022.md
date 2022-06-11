@@ -69,7 +69,7 @@ The script above will generate a `output.png` file, which contains all white pix
 
 ![QR code with some wrong pixels](./seetf-2022/welcome-flag-1.png)
 
-Scanning the QR code gives us the flag. However, the QR code is not very *aesthetically pleasing*... With the knowledge that the pixles produce a QR code, we can actually improve our code to recover a perfect(?) QR code.
+Scanning the QR code gives us the flag (`SEE{W3lc0m3_t0_SEETF_95c42d3be1cb93cce8241235529ad96f8e0e1c12}`). However, the QR code is not very *aesthetically pleasing*... With the knowledge that the pixles produce a QR code, we can actually improve our code to recover a perfect(?) QR code.
 
 We notice that in every frame, the white pixels actually come as a square of 3x3 pixels. This corresponds to one square in the QR code grid. Therefore, we can resize every frame from 180x180 pixels to 60x60 pixels, taking the average of a 3x3 square of pixels to produce every pixel in the new frame.
 
