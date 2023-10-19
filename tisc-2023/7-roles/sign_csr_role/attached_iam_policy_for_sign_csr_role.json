@@ -1,0 +1,40 @@
+{
+  "Statement": [
+    {
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::devsecmeow2023certs/*",
+        "arn:aws:s3:::devsecmeow2023certs"
+      ],
+      "Sid": "VisualEditor0"
+    },
+    {
+      "Action": [
+        "ssm:GetParameter"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:ssm:ap-southeast-1:232705437403:parameter/ca_staging_key",
+        "arn:aws:ssm:ap-southeast-1:232705437403:parameter/ca_staging_crt"
+      ],
+      "Sid": "VisualEditor2"
+    },
+    {
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:logs:ap-southeast-1:232705437403:log-group:/aws/lambda/*"
+      ],
+      "Sid": "VisualEditor1"
+    }
+  ],
+  "Version": "2012-10-17"
+}

@@ -1,0 +1,14 @@
+{
+  "Statement": [
+    {
+      "Action": [
+        "codepipeline:StartPipelineExecution"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:codepipeline:ap-southeast-1:232705437403:devsecmeow-pipeline"
+      ]
+    }
+  ],
+  "Version": "2012-10-17"
+}

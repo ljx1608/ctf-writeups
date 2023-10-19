@@ -1,0 +1,24 @@
+{
+  "Statement": [
+    {
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:logs:ap-southeast-1:232705437403:log-group:/aws/lambda/agent-webservice:*"
+    },
+    {
+      "Action": [
+        "iam:CreateUser",
+        "iam:CreateAccessKey",
+        "iam:CreatePolicy",
+        "iam:AttachUserPolicy"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ],
+  "Version": "2012-10-17"
+}

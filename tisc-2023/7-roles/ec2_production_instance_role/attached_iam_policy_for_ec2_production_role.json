@@ -1,0 +1,15 @@
+{
+  "Statement": [
+    {
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::devsecmeow2023flag2/index.html"
+      ],
+      "Sid": "VisualEditor0"
+    }
+  ],
+  "Version": "2012-10-17"
+}

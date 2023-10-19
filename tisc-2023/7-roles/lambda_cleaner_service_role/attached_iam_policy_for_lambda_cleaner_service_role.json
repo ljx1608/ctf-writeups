@@ -1,0 +1,33 @@
+{
+  "Statement": [
+    {
+      "Action": [
+        "iam:DeleteAccessKey",
+        "iam:ListAttachedUserPolicies",
+        "iam:DeletePolicy",
+        "iam:ListUsers",
+        "iam:DeleteUser",
+        "iam:DetachUserPolicy",
+        "iam:ListAccessKeys",
+        "s3:ListBucket",
+        "s3:DeleteObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "VisualEditor0"
+    },
+    {
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:logs:ap-southeast-1:232705437403:log-group:/aws/lambda/*"
+      ],
+      "Sid": "VisualEditor1"
+    }
+  ],
+  "Version": "2012-10-17"
+}

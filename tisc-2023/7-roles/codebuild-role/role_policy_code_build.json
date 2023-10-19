@@ -1,0 +1,53 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "logs:PutLogEvents",
+        "logs:CreateLogStream",
+        "logs:CreateLogGroup"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:logs:ap-southeast-1:232705437403:log-group:devsecmeow-codebuild-logs:log-stream:*",
+        "arn:aws:logs:ap-southeast-1:232705437403:log-group:devsecmeow-codebuild-logs/*",
+        "arn:aws:logs:ap-southeast-1:232705437403:log-group:devsecmeow-codebuild-logs"
+      ]
+    },
+    {
+      "Action": [
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey*",
+        "kms:Encrypt",
+        "kms:DescribeKey",
+        "kms:Decrypt"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:kms:ap-southeast-1:232705437403:key/6b677475-cc95-4f85-8baa-2f30290cde9d"
+    },
+    {
+      "Action": "ssm:GetParameters",
+      "Effect": "Allow",
+      "Resource": "arn:aws:ssm:ap-southeast-1:232705437403:parameter/devsecmeow/build/password"
+    },
+    {
+      "Action": "ec2:DescribeInstance*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObjectVersion",
+        "s3:GetObject",
+        "s3:GetBucketLocation",
+        "s3:GetBucketAcl"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::devsecmeow2023zip/devsecmeow-pipeline/*",
+        "arn:aws:s3:::devsecmeow2023zip"
+      ]
+    }
+  ]
+}
