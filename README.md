@@ -1,5 +1,7 @@
 # CTF Writeups
 
+*[View on GitHub for video embeds to work.](https://github.com/ljx1608/ctf-writeups)*
+
 ## 2021
 
 - [Sieberrsec CTF 3.0](sctf-3.0.md)
