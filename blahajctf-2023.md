@@ -16,6 +16,8 @@ Swimming through the XML depths, we uncovered a fascinating revelation:
 
 What a fin-tastic find! It appeared to be a flag, and without a second thought, we submitted it. To our delight, it was the key to unlocking this underwater mystery!
 
+*It is important for us to use .gitignore properly to ensure that information about the environment and editor we use (in this case an IntelliJ editor) are not leaked, as it may contain build/debug information, including API secrets etc.*
+
 ## Intended solve: Chrome Chronicles 🌐
 
 Venturing further, we stumbled upon a curious code snippet:
